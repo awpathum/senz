@@ -9,6 +9,7 @@ import Intro from "./Intro";
 import { Paper, TextField, Button, Typography } from "@material-ui/core";
 import { reduxForm, Field } from "redux-form";
 import Notifier from "../Notifier";
+import AllProject from "./AllProjects";
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -77,9 +78,13 @@ class AddProject extends Component {
       newProject,
       this.props.user.id,
       this.props.user.token
-    );
+    ).then((res) =>{
+      console.log(res);
+      //navigate to allProjects
+      AllProject.render();
+    })
     this.setState({ done: true });
-  };
+  }
   handleClose = () => {
     this.setState({ done: false });
   };
